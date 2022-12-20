@@ -1,23 +1,23 @@
 #include<iostream>
 using namespace std;
 
-
+template <typename T>
 struct myNode {
-    int data;
+    T data;
     myNode* left;
     myNode* right;
 };
 
-
-myNode* GetNewNode(int data) {
-    auto* newNode = new myNode();
+template <typename T>
+myNode<T>* GetNewNode(T data) {
+    auto* newNode = new myNode<T>();
     newNode->data = data;
     newNode->left = newNode->right = nullptr;
     return newNode;
 }
 
-
-myNode* Insert(myNode* root,int data) {
+template <typename T>
+myNode<T>* Insert(myNode<T>* root,int data) {
     if(root == nullptr) {
         root = GetNewNode(data);
     }
@@ -32,7 +32,8 @@ myNode* Insert(myNode* root,int data) {
     return root;
 }
 
-bool Search(myNode* root,int data) {
+template <typename T>
+bool Search(myNode<T>* root,int data) {
     if(root == nullptr) {
         return false;
     }
@@ -49,7 +50,7 @@ bool Search(myNode* root,int data) {
 
 
 int main() {
-    myNode* root = nullptr;
+    myNode<int>* root = nullptr;
 
     root = Insert(root,13);
     root = Insert(root,15);
